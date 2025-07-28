@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Donate4Cause</title>
+
+    <!-- ✅ Correct way to link static CSS -->
+    <link rel="stylesheet" href="{% static 'donations/styles.css' %}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>🌍 Donate4Cause</h1>
+        <p>Support meaningful causes around the world</p>
+    </header>
+
+    <!-- Login Info (for future Google/Facebook login) -->
+    <section id="user-info">
+        <p><strong>Note:</strong> Please login to donate (Google or Facebook login will be added later)</p>
+    </section>
+
+    <!-- Causes Section -->
+    <main>
+        <h2>Available Causes</h2>
+
+        <div class="cause" id="nature">
+            <h3>Tree Plantation Drive</h3>
+            <p>Help us plant 10,000 trees across deforested regions in India.</p>
+            <button class="donate-btn" data-title="Donate for Trees">Donate</button>
+        </div>
+
+        <div class="cause" id="education">
+            <h3>Education for All</h3>
+            <p>Support free education for underprivileged children in rural areas.</p>
+            <button class="donate-btn" data-title="Donate for Education">Donate</button>
+        </div>
+
+        <div class="cause" id="shelter">
+            <h3>Animal Shelter Support</h3>
+            <p>Help feed and care for over 500 rescued animals in our shelters.</p>
+            <button class="donate-btn" data-title="Donate for Animal Shelter">Donate</button>
+        </div>
+
+        <div class="cause" id="health">
+            <h3>Medical Aid for Women</h3>
+            <p>Provide free health checkups and medicines for women in low-income areas.</p>
+            <button class="donate-btn" data-title="Donate for Medical Aid">Donate Now</button>
+        </div>
+
+        <div class="cause" id="underprivileged-education">
+            <h3>Education for Underprivileged Children</h3>
+            <p>Provide books, uniforms, and digital learning tools to children who lack access to basic education.</p>
+            <button class="donate-btn" data-title="Donate for Underprivileged Children">Donate</button>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Donate4Cause | Built with ❤️ for a better tomorrow</p>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalCauseTitle">Donate to Cause</h2>
+            <label for="donationAmount">Enter Donation Amount ($):</label>
+            <input type="number" id="donationAmount" min="1" placeholder="Amount" />
+            <button id="confirmDonationBtn" class="donate-btn">Donate</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const modal = document.getElementById("donationModal");
+        const modalTitle = document.getElementById("modalCauseTitle");
+        const closeModal = document.querySelector(".close-btn");
+
+        document.querySelectorAll(".donate-btn").forEach(button => {
+            button.addEventListener("click", function(event) {
+                event.stopPropagation();
+                const title = button.getAttribute("data-title");
+                modalTitle.textContent = title ? title : "Donate to Cause";
+                modal.style.display = "block";
+            });
+        });
+
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
