@@ -1,0 +1,27 @@
+# Ignore Python virtual environment
+venv/
+env/
+
+# Ignore environment variable file
+.env
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore SQLite3 db if using for dev
+*.sqlite3
+
+# Ignore logs
+*.log
+
+# Ignore system files
+.DS_Store
+
+# Ignore Docker-related artifacts (optional)
+*.pid
+*.sock
+
+# VSCode/IDEA folders
+.vscode/
+.idea/

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-b@5nxw+r_!cravfa*s1%x#%m2m@y^=x687#$eemku@0uj=qgw6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,12 +77,28 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'donation_db',
-        'USER':'donation_user',
-        'PASSWORD':'postgres',
-        'HOST':'localhost',
-        'PORT':'5432',
+        'USER': 'donation_user',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',           # Important: 'db' matches service name in docker-compose.yml
+        'PORT': '5432',
     }
 }
+
+    #'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': os.environ.get('POSTGRES_DB', 'donation_db'),
+    #    'USER': os.environ.get('POSTGRES_USER', 'donation_user'),
+    #    'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+    #    'HOST': 'db',  # use service name from docker-compose
+    #    'PORT': '5432',
+
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'donation_db',
+    #    'USER':'donation_user',
+    #    'PASSWORD':'postgres',
+    #    'HOST':'localhost',
+    #    'PORT':'5432',
+#    }
+#}
 
 
 # Password validation
